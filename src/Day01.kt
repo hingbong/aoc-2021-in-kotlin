@@ -1,17 +1,19 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
-
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
+    var counter = 0
     val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    if (input.size < 2) {
+        println(0)
+        return
+    }
+    var previous = input[0].toInt()
+    (1 until input.size)
+        .map { input[it] }
+        .forEach {
+            val i = it.toInt()
+            if (i > previous) {
+                counter++
+            }
+            previous = i
+        }
+    println(counter)
 }
